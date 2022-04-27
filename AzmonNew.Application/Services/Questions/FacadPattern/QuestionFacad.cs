@@ -5,6 +5,7 @@ using AzmonNew.Application.Interface.Contexts;
 using AzmonNew.Application.Interface.FacadPatterns;
 using AzmonNew.Application.Services.Questions.Commands.AddNewQuestionPack;
 using AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon;
+using AzmonNew.Application.Services.Questions.Commands.DeleteAzmon;
 using AzmonNew.Application.Services.Questions.Commands.EditQuestion;
 using AzmonNew.Application.Services.Questions.Commands.EmptyAzmon;
 using AzmonNew.Application.Services.Questions.Commands.RemoveCategory;
@@ -124,6 +125,15 @@ namespace Azmon.Application.Services.Question.FacadPattern
             get
             {
                 return _emptyAzmonService = _emptyAzmonService ??new EmptyAzmonService(_context);
+            }
+        }
+
+        private DeleteAzmonService _deleteAzmonService;
+        public DeleteAzmonService deleteAzmonService
+        {
+            get
+            {
+                return _deleteAzmonService = _deleteAzmonService ?? new DeleteAzmonService(_context);
             }
         }
     }

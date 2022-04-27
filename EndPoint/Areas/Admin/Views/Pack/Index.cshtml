@@ -54,8 +54,8 @@
                                                         <td>@item.AzmonLevel</td>
                                                         <td>@item.QuestionCount</td>
                                                         <td>
-                                                            <button class="btn btn-info" onclick="ShowModalEdituser('@item.Id' , '@item.Name')">ویرایش</button>
-                                                            <button class="btn btn-danger" onclick="DeleteQuestion('@item.Id')">حذف</button>
+                                                            <button class="btn btn-info" onclick="ShowModalEdituser('@item.Id' , '@item.Name')">جزئیات</button>
+                                                            <button class="btn btn-danger" onclick="DeleteAzmon('@item.Id')">حذف</button>
                                  
                                                             
                                                         </td>
@@ -85,16 +85,16 @@
     <script>
 
         
-        function DeleteQuestion(Id) {
+        function DeleteAzmon(Id) {
             
             swal.fire({
-                title: 'حذف سوال',
-                text: "کاربر گرامی از حذف سوال مطمئن هستید؟",
+                title: 'حذف آزمون',
+                text: "کاربر گرامی از حذف آزمون مطمئن هستید؟",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#7cacbe',
-                confirmButtonText: 'بله ، سوال حذف شود',
+                confirmButtonText: 'بله ، آزمون حذف شود',
                 cancelButtonText: 'خیر'
             }).then((result) => {  
                 if (result.value) {                   
@@ -106,7 +106,7 @@
                         contentType: 'application/x-www-form-urlencoded',
                         dataType: 'json',
                         type: "POST",
-                        url: "question/Delete",
+                        url: "Delete",
                         data: postData,
                         success: function (data) {
                             if (data.isSuccess == true) {
@@ -115,7 +115,7 @@
                                     data.message,
                                     'success'
                                 ).then(function (isConfirm) {
-                                    window.location.href = "/Admin/question/";
+                                    window.location.href = "/Admin/Pack/";
                                 });
                             }
                             else {

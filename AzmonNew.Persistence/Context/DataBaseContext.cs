@@ -46,6 +46,7 @@ namespace Azmon.Persistence.Context
             modelBuilder.Entity<Question>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<Category>().HasQueryFilter(p => !p.IsRemoved);
             modelBuilder.Entity<User>().HasQueryFilter(p => !p.IsRemoved);
+            modelBuilder.Entity<QuestionPacks>().HasQueryFilter(p => !p.IsRemoved);
 
         }
     }

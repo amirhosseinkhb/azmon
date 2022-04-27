@@ -31,5 +31,12 @@ namespace EndPoint.Areas.Admin.Controllers
             var x=_questionFacad.EmptyAzmon.Execute(Name);
             return Json(x);
         }
+
+        [HttpPost]
+        public IActionResult Delete(int Id)
+        {
+           var result= _questionFacad.deleteAzmonService.Execute(Id);
+            return Json(result);
+        }
     }
 }

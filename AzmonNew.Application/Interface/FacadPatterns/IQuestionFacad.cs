@@ -3,6 +3,7 @@ using Azmon.Application.Services.Question.Commands.AddNewQuestion;
 using Azmon.Application.Services.Question.Queries.GetAllCategories;
 using AzmonNew.Application.Services.Questions.Commands.AddNewQuestionPack;
 using AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon;
+using AzmonNew.Application.Services.Questions.Commands.DeleteAzmon;
 using AzmonNew.Application.Services.Questions.Commands.EditQuestion;
 using AzmonNew.Application.Services.Questions.Commands.EmptyAzmon;
 using AzmonNew.Application.Services.Questions.Commands.RemoveCategory;
@@ -28,6 +29,7 @@ namespace AzmonNew.Application.Interface.FacadPatterns
         IGetAllAzmonForAdmin getAllAzmon { get; }
         AddQuestionToAzmonService AddQuestionToAzmon { get; }
         EmptyAzmonService EmptyAzmon { get; }
+        DeleteAzmonService deleteAzmonService { get; }
 
     }
 }
