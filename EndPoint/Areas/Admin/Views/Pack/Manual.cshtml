@@ -1,14 +1,17 @@
 ﻿@*@using AzmonNew.Application.Services.Questions.Queries.GetAzmonForAdmin
 @model ResultAllAzmonAdmin*@
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Manual";
+    //Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    Layout = null;
 }
-
 @*@{
     ViewData["Title"] = "Signin";
     Layout = null;
+
+    
 }*@
+
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -50,7 +53,7 @@
                                         <form class="form-account text-right">
                                             <div class="form-account-title">
                                                 <label for="email-phone">نام آزمون  </label>
-                                                <input type="text"  id="Name" name="Name Of Azmon">
+                                                <input type="text"  id="Name" name="NameOfAzmon">
                                             </div>
                                             <div class="form-row-account">
                                                 <a onclick="Build()" class="btn btn-primary btn-login">ساخت آزمون</a>

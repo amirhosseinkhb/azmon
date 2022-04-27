@@ -29,24 +29,25 @@ namespace EndPoint.Areas.Admin.Controllers
 
 
 
-
-        //public IActionResult AddNewPack()
-        //{
-        //    //ViewBag.Categories = new SelectList(_questionFacad.getAllCategoriesService.Execute().Data, "Id", "Name");
-        //    return View();
-        //}
-        //[HttpPost]
-        public IActionResult AddNewPack()//RequestAddNewPackDto request, List<AddNewPack_Option> Options)
+        [HttpGet]
+        public IActionResult AddNewPack()
         {
-            var request = new RequsetQP()
-            {
-                level = 1,
-                name=DateTime.Now.ToString(),
-                questionCount = 9,
-                Categories = _dataBaseContext.Categories.ToList(),
-            };
-          
-            return Json(_questionFacad.addNewQustionPackService.Execute(request).Data.Questions);
+            //ViewBag.Categories = new SelectList(_questionFacad.getAllCategoriesService.Execute().Data, "Id", "Name");
+            return View();
         }
+        //    [HttpPost]
+        //    //public IActionResult AddNewPack(RequsetQP requset)//RequestAddNewPackDto request, List<AddNewPack_Option> Options)
+        //    //{
+        //    //    //var request = new RequsetQP()
+        //    //    //{
+        //    //    //    level = 1,
+        //    //    //    name=DateTime.Now.ToString(),
+        //    //    //    questionCount = 9,
+        //    //    //    Categories = _dataBaseContext.Categories.ToList(),
+        //    //    //};
+
+        //    //    return Json(_questionFacad.addNewQustionPackService.Execute(request).Data.Questions);
+        //    //}
+        //}
     }
 }

@@ -22,7 +22,6 @@ namespace AzmonNew.Application.Services.Questions.Queries.GetQuestionDetailForAd
                 .Include(p => p.Category)
                 .Include(p => p.QuestionImages)
                 .Include(p => p.Options)
-                .Include(p => p.QuestionPacks)
                 .FirstOrDefault(p => p.Id == Id);
 
             var options = new List<OptionDetailDto>();
