@@ -55,6 +55,14 @@ namespace Azmon.Application.Services.Question.Commands.AddNewQuestion
 
                 _context.QuestionImages.AddRange(QuestionImages);
 
+                if (request.Options.Count == 0)
+                {
+                    return new ResultDto
+                    {
+                        IsSuccess = false,
+                        Message = "لطفا گزینه ها را وارد کنید"
+                    };
+                }
 
                 List<QuestionOption> QuestionOption = new List<QuestionOption>();
                 foreach (var item in request.Options)
@@ -66,6 +74,7 @@ namespace Azmon.Application.Services.Question.Commands.AddNewQuestion
                         text = item.text,
                     });
                 }
+                
                 _context.QuestionOptions.AddRange(QuestionOption);
 
                 _context.SaveChanges();

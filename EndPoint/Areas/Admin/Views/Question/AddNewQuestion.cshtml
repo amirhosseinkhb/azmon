@@ -184,15 +184,18 @@
             var dataFeaturesViewModel = $('#tbl_Features tr:gt(0)').map(function () {
                 return {
                     text: $(this.cells[0]).text(),
-                    isTrue: $(this.cells[1]).isTrue,
+                    isTrue: $(this.cells[1]).text(),
                    
                 };
             }).get();
 
             $.each(dataFeaturesViewModel, function (i, val) {
                 data.append('[' + i + '].text', val.text);
-                data.append('[' + i + '].isTrue', val.isTrue);
-
+                if(val.isTrue=="true"){
+                data.append('[' + i + '].isTrue', true);}
+                else{
+                    data.append('[' + i + '].isTrue', false);
+                }
             });
 
 

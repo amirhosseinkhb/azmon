@@ -8,12 +8,12 @@ using System.Linq;
 namespace EndPoint.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PackController : Controller
+    public class PackManualController : Controller
     {
         private readonly IQuestionFacad _questionFacad;
         private readonly IDataBaseContext _dataBaseContext;
 
-        public PackController(IQuestionFacad questionFacad, IDataBaseContext dataBaseContext)
+        public PackManualController(IQuestionFacad questionFacad, IDataBaseContext dataBaseContext)
         {
             _questionFacad = questionFacad;
             _dataBaseContext = dataBaseContext;

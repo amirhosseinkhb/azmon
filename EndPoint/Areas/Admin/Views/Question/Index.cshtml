@@ -37,7 +37,8 @@
                                                 <tr role="row">
                                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="متن سوال: activate to sort column descending" style="width: 222px;">متن سوال</th>
                                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی: activate to sort column ascending" style="width: 401px;">دسته بندی</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی: activate to sort column ascending" style="width: 401px;">دسته بندی</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="سطح سوال: activate to sort column ascending" style="width: 401px;">سطح سوال</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="width: 401px;"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -47,6 +48,7 @@
                                                     <tr role="row" class="odd">
                                                         <td class="sorting_1">@item.QuestionText</td>
                                                         <td>@item.CategoryName</td>
+                                                        <td>@item.QuestionLevel</td>
                                                         <td>
                                                             <button class="btn btn-info" onclick="ShowModalEdituser('@item.Id' , '@item.QuestionText')">ویرایش</button>
                                                             <button class="btn btn-danger" onclick="DeleteQuestion('@item.Id')">حذف</button>

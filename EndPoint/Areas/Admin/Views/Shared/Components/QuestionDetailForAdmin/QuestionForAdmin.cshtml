@@ -3,6 +3,11 @@
     Layout = null;
   }
 <div>
+    <br/>
+    <h5> دسته بندی: @Model.QuestionCategory</h5>
+    <br/>
+     <h5> سطح:     @Model.Level</h5>
+
     <label for="basicInput"> متن سوال</label>
     <input type="text" class="form-control" value= @Model.QuestionText id="Edit_Fullname">
    
@@ -13,13 +18,15 @@
     @foreach(var item in Model.Options)
     {
         <h2> 
-        <input type="text" class="form-control" value= @item.Text id="Edit_Option"+@item.Id>                           @item.isTrue
+        <input type="text" id = "answerBox" class="form-control" value= @item.Text id="Edit_Option"+@item.Id>         
+        @if(@item.isTrue==true){
+            <input type="checkbox" class="form-control" checked/>
+        }else if(@item.isTrue==false){
+             <input type="checkbox" class="form-control" />
+        }
         </h2>     
     }
-    <br/>
-    @Model.QuestionCategory
-    <br/>
-    @Model.Level
+    
 </div>
 
 
