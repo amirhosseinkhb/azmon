@@ -1,0 +1,27 @@
+﻿@model AzmonNew.Application.Services.Questions.Queries.GetQuestionDetailForAdmin.ResultQuestionDetailDto
+@{
+    Layout = null;
+  }
+<div>
+    <label for="basicInput"> متن سوال</label>
+    <input type="text" class="form-control" value= @Model.QuestionText id="Edit_Fullname">
+   
+    
+    
+    
+    <br/>
+    @foreach(var item in Model.Options)
+    {
+        <h2> 
+        <input type="text" class="form-control" value= @item.Text id="Edit_Option"+@item.Id>                           @item.isTrue
+        </h2>     
+    }
+    <br/>
+    @Model.QuestionCategory
+    <br/>
+    @Model.Level
+</div>
+
+
+
+
