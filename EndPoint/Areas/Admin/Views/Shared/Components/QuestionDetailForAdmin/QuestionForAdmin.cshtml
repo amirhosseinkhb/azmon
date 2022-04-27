@@ -2,6 +2,7 @@
 @{
     Layout = null;
   }
+
 <div>
     <br/>
     <h5> دسته بندی: @Model.QuestionCategory</h5>
@@ -17,17 +18,15 @@
     <br/>
     @foreach(var item in Model.Options)
     {
+      
         <h2> 
-        <input type="text" id = "answerBox" class="form-control" value= @item.Text id="Edit_Option"+@item.Id>         
-        @if(@item.isTrue==true){
-            <input type="checkbox" class="form-control" checked/>
-        }else if(@item.isTrue==false){
-             <input type="checkbox" class="form-control" />
-        }
-        </h2>     
+               <input type="text" id = "answerBox" class="form-control" value= @item.Text id="Edit_Option"+@item.Id>
+               @if(@item.isTrue==true){ <input type="checkbox" class="form-control" checked/>}else if(@item.isTrue==false){ <input type="checkbox" class="form-control" />}
+       </h2>     
+   
     }
     
-</div>
+
 
 
 

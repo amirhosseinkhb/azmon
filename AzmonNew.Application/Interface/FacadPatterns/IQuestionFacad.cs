@@ -2,6 +2,7 @@
 using Azmon.Application.Services.Question.Commands.AddNewQuestion;
 using Azmon.Application.Services.Question.Queries.GetAllCategories;
 using AzmonNew.Application.Services.Questions.Commands.AddNewQuestionPack;
+using AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon;
 using AzmonNew.Application.Services.Questions.Commands.EditQuestion;
 using AzmonNew.Application.Services.Questions.Commands.RemoveCategory;
 using AzmonNew.Application.Services.Questions.Commands.RemoveQuestion;
@@ -24,6 +25,7 @@ namespace AzmonNew.Application.Interface.FacadPatterns
         AddNewQuestionPackService addNewQustionPackService { get; }
         IGetQuestionDetailsForAdminServuce getQuestionDetailsForAdminServuce { get; }
         IGetAllAzmonForAdmin getAllAzmon { get; }
+        AddQuestionToAzmonService AddQuestionToAzmon { get; }
 
     }
 }

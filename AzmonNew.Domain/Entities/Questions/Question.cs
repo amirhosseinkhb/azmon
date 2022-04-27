@@ -11,8 +11,6 @@ namespace AzmonNew.Domain.Entities.Questions
         public int level { get; set; }
         public virtual ICollection<QuestionOption> Options { get; set; }
         public virtual ICollection<QuestionImage> QuestionImages { get; set; }
-        
-        public virtual ICollection<QuestionPacks> QuestionPacks { get; set; }
 
     }
 }
