@@ -12,14 +12,16 @@ namespace EndPoint.Areas.Admin.Controllers
             _questionFacad = questionFacad;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchkry,int Page=1)
         {
-            return View();
+            var result = _questionFacad.getAllAzmon.Execute(searchkry,Page);
+            return View(result.Data);
         }
 
         [HttpGet]
         public IActionResult Manual()
         {
+           
             return View();
         }
         

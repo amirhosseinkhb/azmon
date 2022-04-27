@@ -1,137 +1,239 @@
-﻿@*@using AzmonNew.Application.Services.Questions.Queries.GetAzmonForAdmin
-@model ResultAllAzmonAdmin*@
+﻿@using AzmonNew.Application.Services.Questions.Queries.GetAzmonForAdmin
+@model ResultAllAzmonAdmin
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-@*@{
-    ViewData["Title"] = "Signin";
-    Layout = null;
-}*@
 
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ثبت نام</title>
-    <!-- font---------------------------------------->
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/font-awesome.min.css">
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/materialdesignicons.css">
-    <!-- plugin-------------------------------------->
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/bootstrap.css">
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/vendor/noUISlider.min.css">
-    <!-- main-style---------------------------------->
-    <link rel="stylesheet" href="~/SiteTemplate/assets/css/main.css">
-</head>
-<body>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Zero configuration table -->
+        <section id="configuration">
 
-    <!-- login----------------------------------->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg">
-                <section class="page-account-box">
-                    <div class="col-lg-6 col-md-6 col-xs-12 mx-auto">
-                        <div class="ds-userlogin">
-                            <div class="account-box">
-                                <div class="account-box-headline">
-                                    <a href="#" class="login-ds active">
-                                        <span class="title">دستی</span>
-                                    </a>
-                                    <a href="~/authentication/signup" class="register-ds">
-                                        <span class="title">اتوماتیک</span>
-                                    </a>
-                                </div>
-                                <div class="Login-to-account mt-4">
-                                    <div class="account-box-content">
-                                        <h4>ساخت آزمون دستی</h4>
-                                        <form class="form-account text-right">
-                                            <div class="form-account-title">
-                                                <label for="email-phone">نام آزمون  </label>
-                                                <input type="text"  id="Name" name="Name Of Azmon">
-                                            </div>
-                                            <div class="form-row-account">
-                                                <a onclick="Build()" class="btn btn-primary btn-login">ساخت آزمون</a>
-                                            </div>
-                                        </form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title-wrap bar-success">
+                                <h4 class="card-title">لیست آزمون ها</h4>
+                            </div>
+                        </div>
+                        <div class="card-body collapse show">
+                            <div class="card-block card-dashboard">
+                                <p class="card-text">لیست آزمون ها</p>
+
+                                <form method="get" class="col-xl-4 col-lg-6 col-md-12 mb-1">
+                                    <fieldset class="form-group">
+                                        <input type="text" class="form-control" name="searchkey">
+                                        <button class="btn btn-success">جستجو</button>
+                                    </fieldset>
+                                </form>
+
+                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="col-sm-12">
+                                        <table class="table table-striped table-bordered zero-configuration dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="نام آزمون: activate to sort column descending" style="width: 222px;">نام آزمون</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="دسته بندی ها: activate to sort column ascending" style="width: 401px;">دسته بندی ها</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="سطح سوال: activate to sort column ascending" style="width: 401px;">سطح آزمون</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="width: 401px;">تعداد سوالات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Model.AllAzmons)
+                                                {
+                                                    
+                                                    <tr role="row" class="odd">
+                                                        <td class="sorting_1">@item.Name</td>
+                                                        <td>
+                                                        @string.Join( ",", item.Categories.ToArray())
+                                                        </td>
+                                                        <td>@item.AzmonLevel</td>
+                                                        <td>@item.QuestionCount</td>
+                                                        <td>
+                                                            <button class="btn btn-info" onclick="ShowModalEdituser('@item.Id' , '@item.Name')">ویرایش</button>
+                                                            <button class="btn btn-danger" onclick="DeleteQuestion('@item.Id')">حذف</button>
+                                 
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
+                                </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">نمایش 1 تا 10 از 57 سطرها</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="7" tabindex="0" class="page-link">بعدی</a></li></ul></div></div></div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+
+@section Scripts
+{
+
+    <link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+
+        
+        function DeleteQuestion(Id) {
+            
+            swal.fire({
+                title: 'حذف سوال',
+                text: "کاربر گرامی از حذف سوال مطمئن هستید؟",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله ، سوال حذف شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {  
+                if (result.value) {                   
+                    var postData = {
+                        'Id': Id,
+                    };
+
+                    $.ajax({
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "question/Delete",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success'
+                                ).then(function (isConfirm) {
+                                    window.location.href = "/Admin/question/";
+                                });
+                            }
+                            else {
+
+                                swal.fire(
+                                    'هشدار!',
+                                    data.message,
+                                    'warning'
+                                );
+
+                            }
+                        },
+                        error: function (request, status, error) {
+                            alert(request.responseText);
+                        }
+
+                    });
+
+                }
+            })
+        }
+
+
+        function Edituser() {
+
+            var Id = $("#Edit_UserId").val();
+            var Text = $("#Edit_Fullname").val();
+
+            var postData = {
+                'Id': Id,
+                'Text': Text,
+            };
+
+
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                type: "POST",
+                url: "question/Edit",
+                data: postData,
+                success: function (data) {
+                    if (data.isSuccess == true) {
+                        swal.fire(
+                            'موفق!',
+                            data.message,
+                            'success'
+                        ).then(function (isConfirm) {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        swal.fire(
+                            'هشدار!',
+                            data.message,
+                            'warning'
+                        );
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+
+            $('#EditUser').modal('hide');
+
+        }
+
+        function ShowModalEdituser(Id, Text) {
+            $('#QuestionInfo').load("/admin/question/QuestionDetailViewComponent/"+Id)
+            $('#Edit_Fullname').val(Text)
+            $('#Edit_UserId').val(Id)
+
+            $('#EditUser').modal('show');
+
+        }
+
+      
+    </script>
+}
+
+
+@section Modals
+{
+    <!-- Modal Edit User -->
+    <div class="modal fade" id="EditUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ویرایش سوال</h5>
+                   
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                   
+
+
+                    <div class="col-xl-12 col-lg-12 col-md-12 mb-1">
+                        <fieldset class="form-group">
+                            <input type="hidden" id="Edit_UserId" />
+                           
+                          @*  <label for="basicInput"> متن سوال</label>
+                            <input type="text" class="form-control" id="Edit_Fullname">*@
+                             <div id="QuestionInfo">
+
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-dismiss="modal">بستن</a>
+                    <a class="btn btn-primary" onclick="Edituser()">اعمال تغییرات</a>
+                </div>
             </div>
         </div>
     </div>
-    <!-- login----------------------------------->
-    <!-- scroll_Progress------------------------->
-    <div class="progress-wrap">
-        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
-    </div>
-    <!-- scroll_Progress------------------------->
-
-</body>
-<!-- file js---------------------------------------------------->
-<script src="~/SiteTemplate/assets/js/vendor/jquery-3.2.1.min.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/bootstrap.js"></script>
-<!-- plugin----------------------------------------------------->
-<script src="~/SiteTemplate/assets/js/vendor/owl.carousel.min.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/jquery.countdown.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/ResizeSensor.min.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/theia-sticky-sidebar.min.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/wNumb.js"></script>
-<script src="~/SiteTemplate/assets/js/vendor/nouislider.min.js"></script>
-<!-- main js---------------------------------------------------->
-<script src="~/SiteTemplate/assets/js/main.js"></script>
-
-
-<link href="~/Sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-<script src="~/Sweetalert2/sweetalert2.min.js"></script>
-
-
-<script>
-    function Build() {
-        var Name = $("#Name").val();
-        var postData = {
-            'Name': Name,
-        };
-        $.ajax({
-            contentType: 'application/x-www-form-urlencoded',
-            dataType: 'json',
-            type: "POST",
-            url: "manual",
-            data: postData,
-            success: function (data) {
-                if (data.isSuccess == true) {
-                    swal.fire(
-                        'موفق!',
-                        data.message,
-                        'success'
-                    ).then(function (isConfirm) {
-                        window.location.replace("/");
-                    });
-                }
-                else {
-
-                    swal.fire(
-                        'هشدار!',
-                        data.message,
-                        'warning'
-                    );
-                }
-            },
-            error: function (request, status, error) {
-                swal.fire(
-                    'هشدار!',
-                    request.responseText,
-                    'warning'
-                );
-            }
-        });
-    }
-</script>
-</html>
+}
