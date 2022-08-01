@@ -51,7 +51,8 @@
                                                         <td>@item.QuestionLevel</td>
                                                         <td>
                                                             <button class="btn btn-info" onclick="ShowModalEdituser('@item.Id' , '@item.QuestionText')">جزئیات</button>
-                                                            <button class="btn btn-danger" onclick="DeleteQuestion('@item.Id')">افزودن به آزمون</button>
+                            
+                                                            <button class="btn btn-danger" onclick="AddQuestion('@item.Id')">افزودن به آزمون</button>
                                  
                                                             
                                                         </td>
@@ -81,16 +82,16 @@
     <script>
 
         
-        function DeleteQuestion(Id) {
+        function AddQuestion(Id) {
             
             swal.fire({
                 title: 'حذف سوال',
-                text: "کاربر گرامی از حذف سوال مطمئن هستید؟",
+                text: "کاربر گرامی از اضافه کردن سوال مطمئن هستید؟",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#7cacbe',
-                confirmButtonText: 'بله ، سوال حذف شود',
+                confirmButtonText: 'بله ، سوال اضافه شود',
                 cancelButtonText: 'خیر'
             }).then((result) => {  
                 if (result.value) {                   
@@ -102,7 +103,7 @@
                         contentType: 'application/x-www-form-urlencoded',
                         dataType: 'json',
                         type: "POST",
-                        url: "question/Delete",
+                        url: "packmanual/AddQuestionToAzmon",
                         data: postData,
                         success: function (data) {
                             if (data.isSuccess == true) {
@@ -111,7 +112,7 @@
                                     data.message,
                                     'success'
                                 ).then(function (isConfirm) {
-                                    window.location.href = "/Admin/question/";
+                                    window.location.href = "/Admin/packmanual";
                                 });
                             }
                             else {

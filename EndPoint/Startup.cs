@@ -41,7 +41,7 @@ namespace EndPoint
 
 
 
-            string connection = @"Data Source= MPC10000024\SQLEXPRESS; Initial Catalog=Azmon; Integrated Security=True;";
+            string connection = @"Data Source= LAPTOP-L7GK4N0M\SQLEXPRESS; Initial Catalog=Azmon; Integrated Security=True;";
             services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(option => option.UseSqlServer(connection));
             services.AddControllersWithViews();
         }

@@ -11,7 +11,7 @@ namespace AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon
 {
     public interface IAddQuestionToAzmonService
     {
-        ResultDto Execute(RequestDto request);
+        ResultDto Execute(RequestAddQuestionToAzmonDto request);
     }
 
     public class AddQuestionToAzmonService : IAddQuestionToAzmonService
@@ -21,7 +21,7 @@ namespace AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon
         {
             _context = context;
         }
-        public ResultDto Execute(RequestDto request)
+        public ResultDto Execute(RequestAddQuestionToAzmonDto request)
         {
             var azmon = _context.QuestionPacks
                 .Include(x => x.Questions)
@@ -55,7 +55,7 @@ namespace AzmonNew.Application.Services.Questions.Commands.AddQuestionToAzmon
         }
     }
 
-    public class RequestDto
+    public class RequestAddQuestionToAzmonDto
     {
         public int QuestionId { get; set; }
         public int AzmonId { get; set; }

@@ -8,6 +8,7 @@ namespace EndPoint.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private readonly IQuestionFacad _questionFacad;
+
         public CategoryController(IQuestionFacad questionFacad)
         {
             _questionFacad = questionFacad;
